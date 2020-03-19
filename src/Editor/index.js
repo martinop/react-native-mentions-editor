@@ -232,7 +232,7 @@ export class Editor extends React.Component {
       adjMentIndexes
     );
     mentionKeys.forEach(key => {
-      remStr = `@${this.mentionsMap.get(key).username} ${remStr}`;
+      remStr = `@${this.mentionsMap.get(key).name} ${remStr}`;
     });
     return {
       initialStr,
@@ -252,13 +252,13 @@ export class Editor extends React.Component {
       menIndex
     );
 
-    const username = `@${user.username}`;
-    const text = `${initialStr}${username} ${remStr}`;
+    const name = `@${user.name}`;
+    const text = `${initialStr}${name} ${remStr}`;
     //'@[__display__](__id__)' ///find this trigger parsing from react-mentions
 
     //set the mentions in the map.
     const menStartIndex = initialStr.length;
-    const menEndIndex = menStartIndex + (username.length - 1);
+    const menEndIndex = menStartIndex + (name.length - 1);
 
     this.mentionsMap.set([menStartIndex, menEndIndex], user);
 
@@ -326,7 +326,7 @@ export class Editor extends React.Component {
       lastIndex = end + 1;
       formattedText.push(initialStr);
       const formattedMention = this.formatMentionNode(
-        `@${men.username}`,
+        `@${men.name}`,
         `${start}-${men.id}-${end}`
       );
       formattedText.push(formattedMention);
@@ -349,7 +349,7 @@ export class Editor extends React.Component {
         start === 1 ? "" : inputText.substring(lastIndex, start);
       lastIndex = end + 1;
       formattedText = formattedText.concat(initialStr);
-      formattedText = formattedText.concat(`@[${men.username}](id:${men.id})`);
+      formattedText = formattedText.concat(`@[${men.name}](id:${men.id})`);
       if (
         EU.isKeysAreSame(EU.getLastKeyInMap(this.mentionsMap), [start, end])
       ) {
