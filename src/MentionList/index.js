@@ -40,7 +40,7 @@ export class MentionList extends React.PureComponent {
       withoutAtKeyword !== ""
         ? list.filter(user => {
           console.log({user, withoutAtKeyword})
-          return user.username.includes(withoutAtKeyword)
+          return user.name.includes(withoutAtKeyword) || user.name.toLowerCase().includes(withoutAtKeyword)
         })
         : list;
     if (!isTrackingStarted) {

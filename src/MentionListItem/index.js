@@ -37,11 +37,6 @@ export class MentionListItem extends React.PureComponent {
             <Text style={[styles.title, editorStyles.mentionListItemTitle]}>
               {user.name}
             </Text>
-            <Text
-              style={[styles.username, editorStyles.mentionListItemUsername]}
-            >
-              @{user.username}
-            </Text>
           </View>
         </TouchableOpacity>
       </View>
