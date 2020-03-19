@@ -43,7 +43,7 @@ export class MentionList extends React.PureComponent {
           return user.name.includes(withoutAtKeyword) || user.name.toLowerCase().includes(withoutAtKeyword)
         })
         : list;
-    if (!isTrackingStarted) {
+    if (!isTrackingStarted || withoutAtKeyword === "") {
       return null;
     }
     return (
@@ -57,11 +57,11 @@ export class MentionList extends React.PureComponent {
           style={styles.mentionsListContainer}
           keyboardShouldPersistTaps={"always"}
           horizontal={false}
-          {...withoutAtKeyword !== "" && { ListEmptyComponent:
+          ListEmptyComponent={
             <View style={styles.loaderContainer}>
               <ActivityIndicator />
             </View>
-          }}
+          }
           enableEmptySections={true}
           data={suggestions}
           keyExtractor={(item, index) => `${item.id}-${index}`}
