@@ -5,9 +5,11 @@ import {
   View,
   TextInput,
   Text,
+  Image,
   Animated,
   Platform,
-  ScrollView
+  ScrollView,
+  StyleSheet
 } from "react-native";
 
 import EU from "./EditorUtils";
@@ -513,7 +515,7 @@ export class Editor extends React.Component {
     };
 
     return (
-      <View styles={editorStyles.mainContainer}>
+      <View styles={StyleSheet.flatten([styles.mainContainer, editorStyles.mainContainer])}>
         {props.renderMentionList ? (
           props.renderMentionList(mentionListProps)
         ) : (
@@ -535,7 +537,14 @@ export class Editor extends React.Component {
             }}
             style={[styles.editorContainer, editorStyles.editorContainer]}
           >
-            <View style={[{ height: this.state.editorHeight }]}>
+            <View style={[{ height: this.state.editorHeight, paddingHorizontal: 20, justifyContent: 'center' }]}>
+              {props.avatar && (
+                <Image
+                  style={styles.avatar}
+                  resizeMode="cover"
+                  source={props.avatar}
+                />
+              )}
               <View
                 style={[
                   styles.formmatedTextWrapper,
@@ -569,7 +578,6 @@ export class Editor extends React.Component {
                 value={state.inputText}
                 onBlur={props.toggleEditor}
                 onChangeText={this.onChange}
-                selection={this.state.selection}
                 selectionColor={"#000"}
                 onSelectionChange={this.handleSelectionChange}
                 placeholder={state.placeholder}

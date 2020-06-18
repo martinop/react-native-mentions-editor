@@ -3,9 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    borderColor: "green",
-    borderWidth: 1,
-    width: 300
+    minWidth: '100%',
   },
   textContainer: {
     alignSelf: "stretch",
@@ -31,6 +29,7 @@ export default StyleSheet.create({
     top: 0,
     paddingHorizontal: 20,
     paddingVertical: 5,
+    left: 45,
     width: "100%"
   },
   formmatedText: {
@@ -46,5 +45,10 @@ export default StyleSheet.create({
   placeholderText: {
     color: "rgba(0, 0, 0, 0.1)",
     fontSize: 16
-  }
+  },
+  avatar: {
+    width: 31,
+    height: 31,
+    borderRadius: 100,
+  },
 });
